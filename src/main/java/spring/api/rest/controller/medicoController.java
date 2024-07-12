@@ -1,14 +1,13 @@
 package spring.api.rest.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import spring.api.rest.medico.DadosCadastroMedico;
 
 @RestController
-@RequestMapping("/medicos")
+@RequestMapping("medicos")
 public class medicoController {
-    @GetMapping
-    public String hello() {
-        return "Hello World, Spring!";
+    @PostMapping
+    public void cadastrar(@RequestBody DadosCadastroMedico dados) {
+        System.out.println(dados);
     }
 }
