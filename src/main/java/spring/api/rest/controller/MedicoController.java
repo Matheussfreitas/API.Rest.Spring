@@ -7,12 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import spring.api.rest.medico.DadosCadastroMedico;
-import spring.api.rest.medico.ListagemCadastroMedico;
-import spring.api.rest.medico.Medico;
-import spring.api.rest.medico.MedicoRepository;
+import spring.api.rest.medico.*;
 
-import java.util.List;
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RestController
 @RequestMapping("medicos")
@@ -28,6 +25,20 @@ public class MedicoController {
 
     @GetMapping
     public Page<ListagemCadastroMedico> listarMedicos(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        return repository.findAll(paginacao).map(ListagemCadastroMedico::new);
+        return repository.findAllByAtivoTrue(paginacao).map(ListagemCadastroMedico::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarMedico(@RequestBody @Valid DadosAtualizacaoMedico dados) {
+        var medico = repository.getReferenceById(dados.id());
+        medico.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirMedico(@PathVariable Long id) {
+        var medico = repository.getReferenceById(id);
+        medico.excluirMedico();
     }
 }
