@@ -1,4 +1,4 @@
-package spring.api.rest.endereco;
+package spring.api.rest.domain.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

@@ -1,4 +1,4 @@
-package spring.api.rest.medico;
+package spring.api.rest.domain.medico;
 
 public enum Especialidade {
     ORTOPEDIA,

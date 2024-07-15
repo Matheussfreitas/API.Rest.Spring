@@ -1,11 +1,11 @@
-package spring.api.rest.medico;
+package spring.api.rest.domain.medico;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import spring.api.rest.endereco.Endereco;
+import spring.api.rest.domain.endereco.Endereco;
 
 @Table(name = "medicos")
 @Entity(name = "Medico")
@@ -31,6 +31,7 @@ public class Medico {
     private boolean ativo;
 
     public Medico(DadosCadastroMedico dados) {
+        this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.crm = dados.crm();
@@ -48,6 +49,8 @@ public class Medico {
         }
         if (dados.endereco() != null) {
             this.endereco.atualizarInformacoes(dados.endereco());
+        } if (dados.ativo() != null) {
+            this.ativo = true;
         }
     }
 

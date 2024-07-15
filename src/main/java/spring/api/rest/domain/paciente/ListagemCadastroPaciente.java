@@ -1,6 +1,6 @@
-package spring.api.rest.paciente;
+package spring.api.rest.domain.paciente;
 
-import spring.api.rest.medico.Especialidade;
+import spring.api.rest.domain.medico.Especialidade;
 
 public record ListagemCadastroPaciente(
         Long id,

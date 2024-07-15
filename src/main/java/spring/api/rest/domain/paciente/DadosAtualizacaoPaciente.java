@@ -1,12 +1,12 @@
-package spring.api.rest.medico;
+package spring.api.rest.domain.paciente;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import spring.api.rest.endereco.DadosEndereco;
+import spring.api.rest.domain.endereco.DadosEndereco;
 
-public record DadosAtualizacaoMedico(
+public record DadosAtualizacaoPaciente(
         @NotNull
         Long id,
+        Boolean ativo,
         String nome,
         String telefone,
         DadosEndereco endereco
