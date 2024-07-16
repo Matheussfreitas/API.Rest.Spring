@@ -30,4 +30,7 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime data;
+
+    public Consulta(Long id, Medico medico, Paciente paciente, LocalDateTime data) {
+    }
 }
